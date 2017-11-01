@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Room Models</title>
+    </head>
+
+    <body>
+        <img src="volume.svg" id="sourceAIcon" hidden>
+        <img src="person.svg" id="listenerIcon" hidden>
+
+        <div style="width:100%">
+            <canvas id="canvas"></canvas>
+        </div>
+
+        <input type="range" id="sourceHeightSlider" min="0" max="100" value="0" style="-webkit-appearance: slider-vertical">
+
+        <script src="https://cdn.rawgit.com/google/songbird/master/build/songbird.min.js"></script>
+        <script src="canvasControl.js"></script>
+        <script src="roomModel.js"></script>
+    </body>
+</html>
