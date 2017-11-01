@@ -1,7 +1,7 @@
 let canvasControl;
 let songbirdScene;
 let soundSource;
-var sourcePosition = [0.25, 0, 0.25];
+var sourcePosition = {x: 0.25, y: 0, z: 0.25};
 let dimensions = {
   small: {
     width: 1.5, height: 2.4, depth: 1.3,
@@ -42,8 +42,8 @@ let dimensionSelection = 'small';
 let materialSelection = 'brick';
 
 document.getElementById("sourceHeightSlider").addEventListener("input", function(e) {
-    sourcePosition[1] = ((this.value/100)*dimensions[dimensionSelection].height);
-    soundSource.setPosition(sourcePosition[0], sourcePosition[1], sourcePosition[2]);
+    sourcePosition.y = ((this.value/100)*dimensions[dimensionSelection].height);
+    soundSource.setPosition(sourcePosition.x, sourcePosition.y, sourcePosition.z);
 });
 
 function updatePositions(elements) {
@@ -52,9 +52,9 @@ function updatePositions(elements) {
         let y = 0;
         let z = (elements[i].y - 0.5) * dimensions[dimensionSelection].depth / 2;
         if (i < elements.length - 1) {
-            sourcePosition[0] = x;
-            sourcePosition[2] = z;
-            soundSource.setPosition(x, sourcePosition[1], z);
+            sourcePosition.x = x;
+            sourcePosition.z = z;
+            soundSource.setPosition(x, sourcePosition.y, z);
         } else {
             songbirdScene.setListenerPosition(x, y, z);
         }
