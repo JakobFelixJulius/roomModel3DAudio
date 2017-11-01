@@ -53,7 +53,7 @@ function updatePositions(elements) {
         let z = (elements[i].y - 0.5) * dimensions[dimensionSelection].depth / 2;
         if (i < elements.length - 1) {
             sourcePosition[0] = x;
-            sourcePosition[2] = y;
+            sourcePosition[2] = z;
             soundSource.setPosition(x, sourcePosition[1], z);
         } else {
             songbirdScene.setListenerPosition(x, y, z);
