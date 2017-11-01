@@ -2,14 +2,17 @@ let canvasControl;
 let songbirdScene;
 let soundSource;
 var sourcePosition = {x: 0.25, y: 0, z: 0.25};
+
 let dimensionSelection = "small";
 let materialSelection = "brick";
+
 let dimensions = {
   small: {width: 1.5, height: 2.4, depth: 1.3},
   medium: {width: 4, height: 3.2, depth: 3.9},
   large: {width: 8, height: 3.4, depth: 9},
   huge: {width: 20, height: 10, depth: 20},
 };
+
 let materials = {
   brick: {
     left: "brick-bare", right: "brick-bare",
@@ -54,6 +57,7 @@ function updatePositions(elements) {
 }
 
 let onLoad = function() {
+    // Initialize Songbird and create source.
     let audioContext = new AudioContext();
 
     var sound = new Audio("CubeSound.wav");
@@ -61,15 +65,13 @@ let onLoad = function() {
     sound.play();
     var source = audioContext.createMediaElementSource(sound);
 
-  // Initialize Songbird and create Source(s).
     songbirdScene = new Songbird(audioContext, {ambisonicOrder: 3, });
     soundSource = songbirdScene.createSource();
     source.connect(soundSource.input);
 
-//    maxChannelCount = 16;
-//    audioContext.destination.channelCount = maxChannelCount;
     songbirdScene.output.connect(audioContext.destination);
 
+    // Initialize and create Canvas UI
     let canvas = document.getElementById("canvas");
     let elements = [
         {
