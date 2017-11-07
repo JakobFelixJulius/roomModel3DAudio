@@ -7,8 +7,24 @@
     <body>
         <img src="volume.svg" id="sourceAIcon" hidden>
         <img src="person.svg" id="listenerIcon" hidden>
+
         <canvas id="canvas"></canvas>
+
         <input type="range" id="sourceHeightSlider" min="0" max="100" value="0" style="-webkit-appearance: slider-vertical">
+
+        <select id="roomSizeList" class="selectList">
+            <option id="small">small</option>
+            <option id="medium">medium</option>
+            <option id="large">large</option>
+            <option id="huge">huge</option>
+        </select>
+
+        <select id="roomMaterialList" class="selectList">
+            <option id="brick">brick</option>
+            <option id="curtains">curtains</option>
+            <option id="marble">marble</option>
+            <option id="outside">outside</option>
+        </select>
 
         <script src="https://cdn.jsdelivr.net/npm/resonance-audio/build/resonance-audio.min.js"></script>
         <script src="canvasControl.js"></script>

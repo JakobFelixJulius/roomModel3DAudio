@@ -41,6 +41,20 @@ document.getElementById("sourceHeightSlider").addEventListener("input", function
     soundSource.setPosition(sourcePosition.x, sourcePosition.y, sourcePosition.z);
 });
 
+document.getElementById("roomSizeList").addEventListener("change", function(e) {
+    setRoomProperties();
+});
+
+document.getElementById("roomMaterialList").addEventListener("change", function(e) {
+    setRoomProperties();
+});
+
+function setRoomProperties() {
+    dimensionSelection = document.getElementById('roomSizeList').value;
+    materialSelection = document.getElementById('roomMaterialList').value;
+    resonanceAudioScene.setRoomProperties(dimensions[dimensionSelection], materials[materialSelection]);
+}
+
 function updatePositions(elements) {
     for (let i = 0; i < elements.length; i++) {
         let x = (elements[i].x - 0.5) * dimensions[dimensionSelection].width / 2;
