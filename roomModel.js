@@ -1,5 +1,5 @@
 let canvasControl;
-let songbirdScene;
+let resonanceAudioScene;
 let soundSource;
 var sourcePosition = {x: 0.25, y: 0, z: 0.25};
 
@@ -51,13 +51,13 @@ function updatePositions(elements) {
             sourcePosition.z = z;
             soundSource.setPosition(x, sourcePosition.y, z);
         } else {
-            songbirdScene.setListenerPosition(x, y, z);
+            resonanceAudioScene.setListenerPosition(x, y, z);
         }
     }
 }
 
 let onLoad = function() {
-    // Initialize Songbird and create source.
+    // Initialize Resonance Audio and create source.
     let audioContext = new AudioContext();
 
     var sound = new Audio("CubeSound.wav");
@@ -65,11 +65,11 @@ let onLoad = function() {
     sound.play();
     var source = audioContext.createMediaElementSource(sound);
 
-    songbirdScene = new Songbird(audioContext, {ambisonicOrder: 3, });
-    soundSource = songbirdScene.createSource();
+    resonanceAudioScene = new ResonanceAudio(audioContext, {ambisonicOrder: 3, });
+    soundSource = resonanceAudioScene.createSource();
     source.connect(soundSource.input);
 
-    songbirdScene.output.connect(audioContext.destination);
+    resonanceAudioScene.output.connect(audioContext.destination);
 
     // Initialize and create Canvas UI
     let canvas = document.getElementById("canvas");
